@@ -7,14 +7,16 @@ const ReturnedSchema = Joi.object({
   damage: Joi.string(), // if any
   cashDelivery: Joi.string().required(),
   message: Joi.string(),
+  booking: Joi.number().required(),
 });
 
 exports.AddReturning = async (req, res) => {
   try {
     const validate = await ReturnedSchema.validateAsync(req.body);
-    const { booking } = req.query;
-    console.log("Add Returning", req.query);
-    const data = await Model.Returned.create({ ...validate, booking });
+    console.log("Add Returning");
+    const data = await Model.Returned.create({
+      ...validate,
+    });
     if (data < 1) {
       res.send({ Status: { Message: "Error Adding" } });
     } else {
@@ -22,7 +24,6 @@ exports.AddReturning = async (req, res) => {
     }
   } catch (error) {
     console.log("In Catch..");
-
     res.send({ Status: { Message: error.message } });
   }
 };

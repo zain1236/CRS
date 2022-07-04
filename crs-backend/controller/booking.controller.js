@@ -79,11 +79,11 @@ exports.getBooking = async (req, res) => {
 
 exports.updateBookingreturn = async (req, res) => {
   try {
-    console.log('update booking', req.query);
+    console.log("update booking");
 
     const data = await model.Booking.update(
       { returned: true },
-      { where: { booking: req.query.booking } }
+      { where: { id: req.body.booking } }
     );
 
     if (data < 1) {

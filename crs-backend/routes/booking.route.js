@@ -10,6 +10,6 @@ router
 
 router.get("/all", controller.Booking.getAllBooking);
 
-router.put("/return", controller.Booking.updateBookingreturn);
+router.patch("/return", controller.Booking.updateBookingreturn);
 
 module.exports = router;

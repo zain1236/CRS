@@ -12,7 +12,7 @@ export class MultiStepBooking extends Component {
 
     //0
     booked: false,
-    bookingData: {},
+    bookingData: [],
 
     //1
     reg_no: "",
@@ -89,7 +89,7 @@ export class MultiStepBooking extends Component {
           });
         } else {
           this.setState({
-            step: 1,
+            step: 0,
           });
         }
       });

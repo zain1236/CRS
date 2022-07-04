@@ -10,12 +10,19 @@ const Returned = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    const queryParamw = new URLSearchParams(window.location.search);
+    const booking = queryParamw.get("booking");
     const data = {
       meterReading,
       returnDate: returnedDate,
       cashDelivery,
       damage,
       message,
+      booking,
+    };
+
+    const Bookingdata = {
+      booking,
     };
 
     axios
@@ -24,7 +31,7 @@ const Returned = () => {
       .catch((err) => console.log(err));
 
     axios
-      .put("http://localhost:3001/booking/return")
+      .patch("http://localhost:3001/booking/return", Bookingdata)
       .then((data) => console.log(data.data))
       .catch((err) => console.log(err));
   };
@@ -176,7 +183,6 @@ const Returned = () => {
               }}
             />
           </div>
-          {/* <div className="" style={{}}></div> */}
           <button
             className=""
             style={{
